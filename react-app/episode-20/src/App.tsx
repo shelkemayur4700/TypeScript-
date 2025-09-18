@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import "./App.css";
 import Button from "./compo/Button";
+import Todo from "./compo/Todo";
 
 // Here, "title" must always be a string (TypeScript enforces this at compile time)
 const Heading = ({ title }: { title: string }) => <h2>{title}</h2>;
@@ -163,8 +164,8 @@ function App() {
       <List items={["one", "two", "three"]} onClick={onlListClick} />
       <Box>{JSON.stringify(payload)}</Box>
       <Incrementer value={value} setValue={setValue} />
-      <Heading title="Todos" />
-      {todos.map((todo) => (
+      {/* <Heading title="Todos" /> */}
+      {/* {todos.map((todo) => (
         <div key={todo.id}>
           {todo.text}
           <button
@@ -182,7 +183,8 @@ function App() {
       <div>
         <input type="text" ref={newTodoRef} />
         <button onClick={onAddTodo}>ADD</button>
-      </div>
+      </div> */}
+      <Todo />
     </div>
   );
 }
