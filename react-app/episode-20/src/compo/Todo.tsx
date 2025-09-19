@@ -3,6 +3,8 @@ import { ReactNode, useCallback, useRef } from "react";
 // import { useTodos } from "../hooks/useTodos";
 import { UL } from "./UL";
 import { useAddTodos, useRemoveTodos, useTodos } from "../hooks/todoContext";
+import { useSelector } from "react-redux";
+import { selectTodos } from "../redux/store";
 
 // Here, "title" must always be a string (TypeScript enforces this at compile time)
 const Heading = ({ title }: { title: string }) => <h2>{title}</h2>;
@@ -13,7 +15,9 @@ const Box = ({ children }: { children?: ReactNode }) => (
 );
 
 function Todo() {
-  const todos = useTodos();
+  const todos = useSelector(selectTodos);
+
+  // const todos = useTodos();
   const addTodo = useAddTodos();
   const removeTodo = useRemoveTodos();
   // const { todos, addTodo, removeTodo } = useTodos([

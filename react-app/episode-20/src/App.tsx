@@ -10,10 +10,10 @@ import "./App.css";
 import Button from "./compo/Button";
 import Todo from "./compo/Todo";
 import { UL } from "./compo/UL";
-import {
-  TodosProvider,
- 
-} from "./hooks/todoContext";
+import { TodosProvider } from "./hooks/todoContext";
+
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 // Here, "title" must always be a string (TypeScript enforces this at compile time)
 const Heading = ({ title }: { title: string }) => <h2>{title}</h2>;
@@ -204,9 +204,10 @@ const AppWraper = () => (
       },
     ]}
   >
-    <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
-      <App></App>
-      <App></App>
+    <div>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </div>
   </TodosProvider>
 );
