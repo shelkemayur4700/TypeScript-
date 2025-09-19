@@ -9,6 +9,7 @@ import React, {
 import "./App.css";
 import Button from "./compo/Button";
 import Todo from "./compo/Todo";
+import { UL } from "./compo/UL";
 
 // Here, "title" must always be a string (TypeScript enforces this at compile time)
 const Heading = ({ title }: { title: string }) => <h2>{title}</h2>;

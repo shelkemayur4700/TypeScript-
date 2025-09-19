@@ -1,6 +1,7 @@
 import { ReactNode, useCallback, useRef } from "react";
 
 import { useTodos } from "../hooks/useTodos";
+import { UL } from "./UL";
 
 // Here, "title" must always be a string (TypeScript enforces this at compile time)
 const Heading = ({ title }: { title: string }) => <h2>{title}</h2>;
@@ -30,16 +31,28 @@ function Todo() {
   return (
     <div>
       <Heading title="Todos" />
-      {todos.map((todo) => (
+      {/* {todos.map((todo) => (
         <div key={todo.id}>
           {todo.text}
           <button onClick={() => removeTodo(todo.id)}>Remove</button>
         </div>
-      ))}
+      ))} */}
       <div>
         <input type="text" ref={newTodoRef} />
         <button onClick={onAddTodo}>ADD</button>
       </div>
+
+      {/* ----------------GENERIC UL COMPO ----------------- */}
+      <UL
+        items={todos}
+        itemClick={(item) => alert(item.id)}
+        render={(todo) => (
+          <>
+            {todo.text}
+            <button onClick={() => removeTodo(todo.id)}>Remove</button>
+          </>
+        )}
+      />
     </div>
   );
 }
