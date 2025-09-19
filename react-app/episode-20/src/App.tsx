@@ -10,6 +10,10 @@ import "./App.css";
 import Button from "./compo/Button";
 import Todo from "./compo/Todo";
 import { UL } from "./compo/UL";
+import {
+  TodosProvider,
+ 
+} from "./hooks/todoContext";
 
 // Here, "title" must always be a string (TypeScript enforces this at compile time)
 const Heading = ({ title }: { title: string }) => <h2>{title}</h2>;
@@ -190,4 +194,21 @@ function App() {
   );
 }
 
-export default App;
+const AppWraper = () => (
+  <TodosProvider
+    initialTodos={[
+      {
+        id: 0,
+        text: "Hey there useContext",
+        done: false,
+      },
+    ]}
+  >
+    <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
+      <App></App>
+      <App></App>
+    </div>
+  </TodosProvider>
+);
+export default AppWraper;
+// export default App;

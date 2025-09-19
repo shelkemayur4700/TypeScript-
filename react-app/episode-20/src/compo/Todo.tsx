@@ -1,7 +1,8 @@
 import { ReactNode, useCallback, useRef } from "react";
 
-import { useTodos } from "../hooks/useTodos";
+// import { useTodos } from "../hooks/useTodos";
 import { UL } from "./UL";
+import { useAddTodos, useRemoveTodos, useTodos } from "../hooks/todoContext";
 
 // Here, "title" must always be a string (TypeScript enforces this at compile time)
 const Heading = ({ title }: { title: string }) => <h2>{title}</h2>;
@@ -12,13 +13,16 @@ const Box = ({ children }: { children?: ReactNode }) => (
 );
 
 function Todo() {
-  const { todos, addTodo, removeTodo } = useTodos([
-    {
-      id: 0,
-      text: "Hey there",
-      done: false,
-    },
-  ]);
+  const todos = useTodos();
+  const addTodo = useAddTodos();
+  const removeTodo = useRemoveTodos();
+  // const { todos, addTodo, removeTodo } = useTodos([
+  //   {
+  //     id: 0,
+  //     text: "Hey there",
+  //     done: false,
+  //   },
+  // ]);
   // Ref is typed: newTodoRef.current will be an <input> element or null
   const newTodoRef = useRef<HTMLInputElement>(null);
 
